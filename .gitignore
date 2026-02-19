@@ -1,0 +1,10 @@
+build/
+.gradle/
+.idea/
+
+# OS
+.DS_Store
+.claude/
+
+# Docs
+PLAN.md

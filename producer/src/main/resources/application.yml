@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: producer
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: fromclicktoinsight.serializer.PurchaseEventSerializer
+      acks: all
+      retries: 3
+
+server:
+  port: 8083
+
+app:
+  kafka:
+    topic: purchase-events
+  generator:
+    rate-ms: 100
