@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: stream-consumer
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: stream-consumer-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: fromclicktoinsight.serializer.PurchaseEventDeserializer
+      max-poll-records: 500
+
+  datasource:
+    url: jdbc:clickhouse://localhost:8123/default
+    driver-class-name: com.clickhouse.jdbc.ClickHouseDriver
+    username: default
+    password: default
+
+
+app:
+  kafka:
+    topic: purchase-events
+  clickhouse:
+    batch-size: 100
+    flush-interval-ms: 1000
